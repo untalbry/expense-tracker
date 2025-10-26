@@ -36,4 +36,10 @@ class Expenses_Tracker():
         for expense in self.data:
             print(f"expense: {expense['description']} of amount {expense['amount']} on date {expense['date']}")
     def edit_expense(self, expense: Expense) -> None:
-         pass 
+        for e in self.data:
+            if e['description'] == expense.description:
+                e['amount'] = expense.amount
+                self._save_data()
+                print(f"edited expense: {expense.description}")
+                return          
+        print(f"expense with description {expense.description} not found")

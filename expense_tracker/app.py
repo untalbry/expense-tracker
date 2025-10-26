@@ -17,8 +17,8 @@ def main():
         expenses.add_expense(Expense(description=args.description, amount=args.amount,  date=datetime.now()))
     elif args.action == "view":
         expenses.view_expenses()
-    elif args.action == "edit" and args.description and args.edit:
-        pass
+    elif args.action == "edit" and args.description and args.amount:
+        expenses.edit_expense(Expense(description=args.description, amount=args.amount,  date=""))
     elif args.action == "remove" and args.description:
         pass 
     else:
