@@ -43,3 +43,11 @@ class Expenses_Tracker():
                 print(f"edited expense: {expense.description}")
                 return          
         print(f"expense with description {expense.description} not found")
+    def remove_expense(self, description: str) -> None:
+        for e in self.data:
+            if e['description'] == description:
+                self.data.remove(e)
+                self._save_data()
+                print(f"removed expense: {description}")
+                return          
+        print(f"expense with description {description} not found")
