@@ -29,9 +29,12 @@ class Expenses_Tracker():
             json.dump(self.data, file)
 
     def add_expense(self, expense: Expense) -> None:
-        self.data.append({"description": expense.description, "amount": expense.amount, "date": expense.date.isoformat()})
-        self._save_data()
-        print(f"added expense: {expense.description} of amount {expense.amount} on date {expense.date}")
+        if expense.amount <= 0:
+            self.data.append({"description": expense.description, "amount": expense.amount, "date": expense.date.isoformat()})
+            self._save_data()
+            print(f"added expense: {expense.description} of amount {expense.amount} on date {expense.date}")
+        else: 
+            print("amount must be positive")
     def view_expenses(self) -> None:
         for expense in self.data:
             print(f"expense: {expense['description']} of amount {expense['amount']} on date {expense['date']}")
