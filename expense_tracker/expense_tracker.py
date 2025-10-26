@@ -1,6 +1,6 @@
 import os 
 import json 
-from .model.expense import Expense
+from expense_tracker.model.expense import Expense
 FILENAME = "expense_tracker/data/expenses.json"    
 
 class Expenses_Tracker(): 
@@ -32,3 +32,8 @@ class Expenses_Tracker():
         self.data.append({"description": expense.description, "amount": expense.amount, "date": expense.date.isoformat()})
         self._save_data()
         print(f"added expense: {expense.description} of amount {expense.amount} on date {expense.date}")
+    def view_expenses(self) -> None:
+        for expense in self.data:
+            print(f"expense: {expense['description']} of amount {expense['amount']} on date {expense['date']}")
+    def edit_expense(self, expense: Expense) -> None:
+         pass 

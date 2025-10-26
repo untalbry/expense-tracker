@@ -1,7 +1,8 @@
-from .expense_tracker import Expenses_Tracker
-from .model.expense import Expense
+from expense_tracker.expense_tracker import Expenses_Tracker
+from expense_tracker.model.expense import Expense
 import argparse
 from datetime import datetime
+
 
 def main():
     expenses = Expenses_Tracker()
@@ -15,9 +16,11 @@ def main():
     if args.action == "add" and args.description and args.amount:
         expenses.add_expense(Expense(description=args.description, amount=args.amount,  date=datetime.now()))
     elif args.action == "view":
-        print("viewing expenses")
+        expenses.view_expenses()
+    elif args.action == "edit" and args.description and args.edit:
+        pass
     elif args.action == "remove" and args.description:
-        print(f"removed expense: {args.description}")
+        pass 
     else:
         print("invalid command")
 
